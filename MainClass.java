@@ -1,14 +1,14 @@
 /*
- *	Flusher: Early ALPHA, v1
+ *	Flusher: Early ALPHA, v2
  *
  *	A basic virus removal and anti-intrusion
- *	system for Windows based personal computers
+ *	system for Windows based personal computers.
  * 
- *	Made by Nullbytes aka Arseny Denisov
+ *	Made by Nullbytes aka Arseny Denisov.
  * 	Licensed under the GPLv3
  * 
  * 	To do later:
- * 	-Add infection removal for other browsers than FireFox
+ * 
  *	-Optimize the code and make it more secure
  *  
  */
@@ -38,7 +38,7 @@ public class MainClass {
 	private static void createAndShowGUI() {
 
 		//the frame
-		final JFrame frame = new JFrame("Flusher v1 : A virus cleaning system by Nullbytes");
+		final JFrame frame = new JFrame("Flusher v1 : A first-aid system and networking cleaner");
 		frame.setSize(500, 300);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,7 +128,9 @@ public class MainClass {
 		    	   
 		    	   if (checkBox3.isSelected()){
 		    		   try {
-		    			   Runtime.getRuntime().exec("cmd.exe /c start rmdir " + System.getenv("APPDATA") + "\\Mozilla /s");
+		    			   String strAppd = System.getenv("APPDATA");
+		    			   Runtime.getRuntime().exec("cmd.exe /c start rmdir " + strAppd + "\\Roaming\\Mozilla /s");
+		    			   Runtime.getRuntime().exec("cmd.exe /c start rmdir \"" + strAppd + "\\Roaming\\Microsoft\\Internet Explorer\" /s");
 		    		   }catch (IOException e) {
 		    			   e.printStackTrace();
 		    		   }
